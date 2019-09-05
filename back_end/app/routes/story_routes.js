@@ -6,6 +6,7 @@ const passport = require('passport')
 
 // pull in Mongoose model for examples
 const Story = require('../models/story')
+const Comment = require('../models/comment')
 
 // this is a collection of methods that help us detect situations when we need
 // to throw a custom error
@@ -75,33 +76,44 @@ router.get('/stories/:id', function(req, res) {
       });
   });
 
-
   /**
  * Action:      SHOW
  * Method:      GET
  * URI:         /api/articles/5d664b8b68b4f5092aba18e9
  * Description: Get An Article by Article ID
  */
-router.get('/stories/:story_id/comments/comment_id', function(req, res) {
-    Story.findById(req.params.id)
-      .then(function(story) {
-        if(story) {
-          res.status(200).json({ story: story });
-        } else {
-          // If we couldn't find a document with the matching ID
-          res.status(404).json({
-            error: {
-              name: 'DocumentNotFoundError',
-              message: 'The provided ID doesn\'t match any documents'
-            }
+
+///stories/5d70f5e08e3d9a715039b70a/comments
+router.get('/stories/:story_id/comments', function(req, res) {
+  Story.findById(req.params.story_id)
+    .then(function(story) {
+      console.log(story);
+      if(story) {
+
+        Comment.find()
+        .then(function(comments) {
+          let storyComments = comments.filter( comment => {
+            return comment.commentedAt == story.id
           });
-        }
-      })
-      // Catch any errors that might occur
-      .catch(function(error) {
-        res.status(500).json({ error: error });
-      });
-  });
+          res.status(200).json({ story: story, comments: storyComments });
+        });
+
+        
+      } else {
+        // If we couldn't find a document with the matching ID
+        res.status(404).json({
+          error: {
+            name: 'DocumentNotFoundError',
+            message: 'The provided ID doesn\'t match any documents'
+          }
+        });
+      }
+    })
+    // Catch any errors that might occur
+    .catch(function(error) {
+      res.status(500).json({ error: error });
+    });
+});
 
 
 // CREATE

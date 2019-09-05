@@ -16,6 +16,8 @@ const BadParamsError = errors.BadParamsError
 const BadCredentialsError = errors.BadCredentialsError
 
 const User = require('../models/user')
+// pull in Mongoose model for examples
+const Story = require('../models/story')
 
 // passing this as a second argument to `router.<verb>` will make it
 // so that a token MUST be passed for that route to be available
@@ -156,11 +158,22 @@ router.delete('/sign-out', requireToken, (req, res, next) => {
  * URI:         /api/articles/5d664b8b68b4f5092aba18e9
  * Description: Get An Article by Article ID
  */
+
+
 router.get('/profile/:id', function(req, res) {
   User.findById(req.params.id)
     .then(function(user) {
       if(user) {
-        res.status(200).json({ user: user });
+
+        Story.find()
+        .then(function(stories) {
+          let userStories = stories.filter( story => {
+            return story.owner == user.id
+          });
+          res.status(200).json({ user: user, stories: userStories });
+        });
+
+        
       } else {
         // If we couldn't find a document with the matching ID
         res.status(404).json({
