@@ -38,13 +38,13 @@ router.get('/', function (req, res) {
 });
 
 
-// Get All comeents
+// Get All comment
 router.get('/comments', function (req, res) {
   Comment.find()
-    // Return all comeents as an Array
-    .then(function (comeents) {
+    // Return all comment as an Array
+    .then(function (comment) {
       res.status(200).json({
-        comeents: comeents
+        comment: comment
       });
     })
     // Catch any errors that might occur
@@ -54,11 +54,12 @@ router.get('/comments', function (req, res) {
       });
     });
 });
-// CREATe
-// POST /comeents
+// CREATE
+// POST /comment
 router.post('/comments', requireToken, (req, res, next) => {
   // set owner of new comment to be current user
-  req.body.Comment.postedBy = req.user.id
+  console.log(req.body)
+  req.body.comment.owner = req.user.id
 
   Comment.create(req.body.comment)
     // respond to succesful `create` with status 201 and JSON of new "comment"
@@ -80,7 +81,7 @@ router.post('/comments', requireToken, (req, res, next) => {
 router.patch('/comments/:id', requireToken, removeBlanks, (req, res, next) => {
   // if the client attempts to change the `owner` property by including a new
   // owner, prevent that by deleting that key/value pair
-  delete req.body.comment.postedBy
+  delete req.body.comment.owner
 
   Comment.findById(req.params.id)
     .then(handle404)
