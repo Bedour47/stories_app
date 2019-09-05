@@ -22,7 +22,9 @@ const removeBlanks = require('../../lib/remove_blank_fields')
 // passing this as a second argument to `router.<verb>` will make it
 // so that a token MUST be passed for that route to be available
 // it will also set `req.user`
-const requireToken = passport.authenticate('bearer', { session: false })
+const requireToken = passport.authenticate('bearer', {
+  session: false
+})
 
 // instantiate a router (mini app that only handles routes)
 const router = express.Router()
@@ -30,18 +32,22 @@ const router = express.Router()
 // INDEX
 // GET /examples
 router.get('/examples', requireToken, (req, res, next) => {
-  
+
   // Option 1 get user's examples
-  Example.find({owner: req.user.id})
-    .then(examples => res.status(200).json({examples: examples}))
+  Example.find({
+      owner: req.user.id
+    })
+    .then(examples => res.status(200).json({
+      examples: examples
+    }))
     .catch(next)
-  
+
   // // Option 2 get user's examples
   // // must import User model and User model must have virtual for examples
   // User.findById(req.user.id) 
-    // .populate('examples')
-    // .then(user => res.status(200).json({ examples: user.examples }))
-    // .catch(next)
+  // .populate('examples')
+  // .then(user => res.status(200).json({ examples: user.examples }))
+  // .catch(next)
 })
 
 // SHOW
@@ -55,8 +61,10 @@ router.get('/examples/:id', requireToken, (req, res, next) => {
       // pass the `req` object and the Mongoose record to `requireOwnership`
       // it will throw an error if the current user isn't the owner
       requireOwnership(req, example)
-    
-      res.status(200).json({ example: example.toObject() })
+
+      res.status(200).json({
+        example: example.toObject()
+      })
     })
     // if an error occurs, pass it to the handler
     .catch(next)
@@ -71,7 +79,9 @@ router.post('/examples', requireToken, (req, res, next) => {
   Example.create(req.body.example)
     // respond to succesful `create` with status 201 and JSON of new "example"
     .then(example => {
-      res.status(201).json({ example: example.toObject() })
+      res.status(201).json({
+        example: example.toObject()
+      })
     })
     // if an error occurs, pass it off to our error handler
     // the error handler needs the error message and the `res` object so that it

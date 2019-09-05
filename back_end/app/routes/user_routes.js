@@ -20,7 +20,9 @@ const User = require('../models/user')
 // passing this as a second argument to `router.<verb>` will make it
 // so that a token MUST be passed for that route to be available
 // it will also set `res.user`
-const requireToken = passport.authenticate('bearer', { session: false })
+const requireToken = passport.authenticate('bearer', {
+  session: false
+})
 
 // instantiate a router (mini app that only handles routes)
 const router = express.Router()
@@ -34,8 +36,8 @@ router.post('/sign-up', (req, res, next) => {
     // the password is an empty string
     .then(credentials => {
       if (!credentials ||
-          !credentials.password ||
-          credentials.password !== credentials.password_confirmation) {
+        !credentials.password ||
+        credentials.password !== credentials.password_confirmation) {
         throw new BadParamsError()
       }
     })
@@ -55,7 +57,9 @@ router.post('/sign-up', (req, res, next) => {
     .then(user => User.create(user))
     // send the new user object back with status 201, but `hashedPassword`
     // won't be send because of the `transform` in the User model
-    .then(user => res.status(201).json({ user: user.toObject() }))
+    .then(user => res.status(201).json({
+      user: user.toObject()
+    }))
     // pass any errors along to the error handler
     .catch(next)
 })
@@ -67,7 +71,9 @@ router.post('/sign-in', (req, res, next) => {
   let user
 
   // find a user based on the email that was passed
-  User.findOne({ email: req.body.credentials.email })
+  User.findOne({
+      email: req.body.credentials.email
+    })
     .then(record => {
       // if we didn't find a user with that email, send 401
       if (!record) {
@@ -95,7 +101,9 @@ router.post('/sign-in', (req, res, next) => {
     })
     .then(user => {
       // return status 201, the email, and the new token
-      res.status(201).json({ user: user.toObject() })
+      res.status(201).json({
+        user: user.toObject()
+      })
     })
     .catch(next)
 })
@@ -107,7 +115,9 @@ router.patch('/change-password', requireToken, (req, res, next) => {
   // `req.user` will be determined by decoding the token payload
   User.findById(req.user.id)
     // save user outside the promise chain
-    .then(record => { user = record })
+    .then(record => {
+      user = record
+    })
     // check that the old password is correct
     .then(() => bcryptjs.compare(req.body.passwords.old, user.hashedPassword))
     // `correctPassword` will be true if hashing the old password ends up the
@@ -140,5 +150,31 @@ router.delete('/sign-out', requireToken, (req, res, next) => {
     .then(() => res.sendStatus(204))
     .catch(next)
 })
+/**
+ * Action:      SHOW
+ * Method:      GET
+ * URI:         /api/articles/5d664b8b68b4f5092aba18e9
+ * Description: Get An Article by Article ID
+ */
+router.get('/profile/:id', function(req, res) {
+  User.findById(req.params.id)
+    .then(function(user) {
+      if(user) {
+        res.status(200).json({ user: user });
+      } else {
+        // If we couldn't find a document with the matching ID
+        res.status(404).json({
+          error: {
+            name: 'DocumentNotFoundError',
+            message: 'The provided ID doesn\'t match any documents'
+          }
+        });
+      }
+    })
+    // Catch any errors that might occur
+    .catch(function(error) {
+      res.status(500).json({ error: error });
+    });
+});
 
 module.exports = router
