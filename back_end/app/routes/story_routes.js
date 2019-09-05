@@ -48,6 +48,62 @@ router.get('/', function(req, res){
 });
 
 
+/**
+ * Action:      SHOW
+ * Method:      GET
+ * URI:         /api/articles/5d664b8b68b4f5092aba18e9
+ * Description: Get An Article by Article ID
+ */
+router.get('/stories/:id', function(req, res) {
+    Story.findById(req.params.id)
+      .then(function(story) {
+        if(story) {
+          res.status(200).json({ story: story });
+        } else {
+          // If we couldn't find a document with the matching ID
+          res.status(404).json({
+            error: {
+              name: 'DocumentNotFoundError',
+              message: 'The provided ID doesn\'t match any documents'
+            }
+          });
+        }
+      })
+      // Catch any errors that might occur
+      .catch(function(error) {
+        res.status(500).json({ error: error });
+      });
+  });
+
+
+  /**
+ * Action:      SHOW
+ * Method:      GET
+ * URI:         /api/articles/5d664b8b68b4f5092aba18e9
+ * Description: Get An Article by Article ID
+ */
+router.get('/stories/:story_id/comments/comment_id', function(req, res) {
+    Story.findById(req.params.id)
+      .then(function(story) {
+        if(story) {
+          res.status(200).json({ story: story });
+        } else {
+          // If we couldn't find a document with the matching ID
+          res.status(404).json({
+            error: {
+              name: 'DocumentNotFoundError',
+              message: 'The provided ID doesn\'t match any documents'
+            }
+          });
+        }
+      })
+      // Catch any errors that might occur
+      .catch(function(error) {
+        res.status(500).json({ error: error });
+      });
+  });
+
+
 // CREATE
 // POST /stories
 router.post('/stories', requireToken, (req, res, next) => {
@@ -107,5 +163,6 @@ router.delete('/stories/:id', requireToken, (req, res, next) => {
       // if an error occurs, pass it to the handler
       .catch(next)
 })
+
 
   module.exports = router
