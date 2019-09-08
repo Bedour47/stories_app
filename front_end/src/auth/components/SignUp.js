@@ -10,8 +10,11 @@ class SignUp extends Component {
 
     this.state = {
       email: '',
+      username: '',
       password: '',
-      passwordConfirmation: ''
+      passwordConfirmation: '',
+      img: '',
+      bio: ''
     }
   }
 
@@ -31,13 +34,13 @@ class SignUp extends Component {
       .then(() => history.push('/'))
       .catch(error => {
         console.error(error)
-        this.setState({ email: '', password: '', passwordConfirmation: '' })
+        this.setState({ email: '', username: '', password: '', passwordConfirmation: '', img: '', bio: '' })
         alert(messages.signUpFailure, 'danger')
       })
   }
 
   render () {
-    const { email, password, passwordConfirmation } = this.state
+    const { email, username, password, passwordConfirmation, img, bio } = this.state
 
     return (
       <form className='auth-form' onSubmit={this.onSignUp}>
@@ -50,6 +53,15 @@ class SignUp extends Component {
           value={email}
           type="email"
           placeholder="Email"
+          onChange={this.handleChange}
+        />
+        <label htmlFor="username">Username</label>
+        <input
+          required
+          name="username"
+          value={username}
+          type="username"
+          placeholder="Username"
           onChange={this.handleChange}
         />
         <label htmlFor="password">Password</label>
@@ -68,6 +80,22 @@ class SignUp extends Component {
           value={passwordConfirmation}
           type="password"
           placeholder="Confirm Password"
+          onChange={this.handleChange}
+        />
+        <label htmlFor="img">Image</label>
+        <input
+          name="img"
+          value={img}
+          type="img"
+          placeholder="Image"
+          onChange={this.handleChange}
+        />
+        <label htmlFor="bio">bio</label>
+        <input
+          name="bio"
+          value={bio}
+          type="bio"
+          placeholder="bio"
           onChange={this.handleChange}
         />
         <button type="submit">Sign Up</button>

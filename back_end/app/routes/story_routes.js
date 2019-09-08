@@ -153,7 +153,7 @@ router.patch('/stories/:id', requireToken, removeBlanks, (req, res, next) => {
         return story.update(req.body.story)
       })
       // if that succeeded, return 204 and no JSON
-      .then(() => res.status(204))
+      .then(() => res.sendStatus(204))
       // if an error occurs, pass it to the handler
       .catch(next)
   })

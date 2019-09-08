@@ -94,7 +94,7 @@ router.patch('/comments/:id', requireToken, removeBlanks, (req, res, next) => {
       return comment.update(req.body.comment)
     })
     // if that succeeded, return 204 and no JSON
-    .then(() => res.status(204))
+    .then(() => res.sendStatus(204))
     // if an error occurs, pass it to the handler
     .catch(next)
 })
