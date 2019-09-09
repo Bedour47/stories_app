@@ -9,11 +9,8 @@ import SignIn from './auth/components/SignIn'
 import SignOut from './auth/components/SignOut'
 import ChangePassword from './auth/components/ChangePassword'
 import AlertDismissible from './auth/components/AlertDismissible'
-
+import LastStoriesList from './components/LastStoriesList';
 import Home from './Home'
-import StoryList from './components/profile/StoryList'
-
-
 class App extends Component {
   constructor () {
     super()
@@ -56,8 +53,7 @@ class App extends Component {
           )} />
         </main>
         <Home />
-        <StoryList stories={stories}/>
-
+        <LastStoriesList stories={stories}/>
       </React.Fragment>
     )
   }

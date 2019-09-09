@@ -1,31 +1,34 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-
+import { Link, Route } from 'react-router-dom'
+import SignUp from '../../src/auth/components/SignUp'
+import SignIn from '../../src/auth/components/SignIn'
+import SignOut from '../../src/auth/components/SignOut'
 import './Header.scss'
 
 const authenticatedOptions = (
   <React.Fragment>
-    <Link to="/change-password">Change Password</Link>
+    {/* <Link to="/change-password">Change Password</Link> */}
     <Link to="/sign-out">Sign Out</Link>
   </React.Fragment>
 )
 
 const unauthenticatedOptions = (
   <React.Fragment>
-    <Link to="/sign-up">Sign Up</Link>
-    <Link to="/sign-in">Sign In</Link>
+    {/* <Link to="/sign-up">Sign Up</Link>
+    <Link to="/sign-in">Sign In</Link> */}
   </React.Fragment>
 )
 
 const alwaysOptions = (
   <React.Fragment>
-    <Link to="/">Home</Link>
+    {/* <Link to="/">Home</Link> */}
   </React.Fragment>
 )
 
 const Header = ({ user }) => (
   <header className="main-header">
-    <h1>Stories</h1>
+    <button><Link to="/">Stories</Link></button>
+    
     <nav>
       { user && <span>Welcome, {user.username}</span>}
       { user ? authenticatedOptions : unauthenticatedOptions }

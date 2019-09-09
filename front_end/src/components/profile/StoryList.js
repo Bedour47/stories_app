@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import StoryItem from './StoryItem';
-import apiUrl from '../../src/apiConfig'
+import apiUrl from '../../../src/apiConfig';
 import axios from 'axios'
 export default class StoryList extends Component {
     constructor(props) {
@@ -19,7 +19,7 @@ export default class StoryList extends Component {
           })
         }
     render() {
-        const allStories = this.props.stories.map((story, index) => {
+        const allStories = this.state.stories.map((story, index) => {
             return <StoryItem story={story} key={index} /> 
 
 
