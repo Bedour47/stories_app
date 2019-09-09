@@ -9,8 +9,10 @@ import SignIn from './auth/components/SignIn'
 import SignOut from './auth/components/SignOut'
 import ChangePassword from './auth/components/ChangePassword'
 import AlertDismissible from './auth/components/AlertDismissible'
+
 import Home from './Home'
 import StoryList from './components/profile/StoryList'
+
 
 class App extends Component {
   constructor () {
@@ -55,6 +57,7 @@ class App extends Component {
         </main>
         <Home />
         <StoryList stories={stories}/>
+
       </React.Fragment>
     )
   }
