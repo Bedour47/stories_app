@@ -9,6 +9,8 @@ import SignIn from './auth/components/SignIn'
 import SignOut from './auth/components/SignOut'
 import ChangePassword from './auth/components/ChangePassword'
 import AlertDismissible from './auth/components/AlertDismissible'
+import LastStoriesList from './components/LastStoriesList';
+import { getAllUserStories } from './auth/api.js';
 
 class App extends Component {
   constructor () {
@@ -29,7 +31,7 @@ class App extends Component {
   }
 
   render () {
-    const { alerts, user } = this.state
+    const { alerts, user, stories } = this.state
 
     return (
       <React.Fragment>
@@ -51,6 +53,7 @@ class App extends Component {
             <ChangePassword alert={this.alert} user={user} />
           )} />
         </main>
+        <LastStoriesList stories={stories}/>
       </React.Fragment>
     )
   }
