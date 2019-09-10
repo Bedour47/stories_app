@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-import LastStoriesItem from './LastStoriesItem';
-import { getAllUserStories } from '../auth/api.js';
-import apiUrl from '../../src/apiConfig'
+import apiUrl from '../../apiConfig'
 import axios from 'axios'
+import StoryItem from './StoryItem';
 
 export default class LastStoriesList extends Component {
     constructor(props) {
@@ -25,8 +24,9 @@ export default class LastStoriesList extends Component {
 
     render() {
         const allStories = this.state.stories.map((story, index) => {
-            return <LastStoriesItem story={story} key={index} />
+            return <StoryItem story={story} key={index} />
         })
-        return allStories
+        const lastStories = allStories.slice(-3);
+        return lastStories;
     }
 }

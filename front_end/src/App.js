@@ -9,14 +9,15 @@ import SignIn from './auth/components/SignIn'
 import SignOut from './auth/components/SignOut'
 import ChangePassword from './auth/components/ChangePassword'
 import AlertDismissible from './auth/components/AlertDismissible'
-import LastStoriesList from './components/LastStoriesList';
-import StoryList from './components/profile/StoryList';
+import LastStoriesList from './components/stories/LastStoriesList';
+import StoryList from './components/stories/StoryList';
 import Home from './Home'
 
 import StoriesType from './components/StoriesType'
 import TrueStories from './components/stories/TrueStories'
 import Story from './components/Story'
 import ImaginationStories from './components/stories/ImaginationStories';
+import AddStoryForm from './components/forms/AddStoryForm';
 
 class App extends Component {
   constructor () {
@@ -61,7 +62,10 @@ class App extends Component {
         </main>
 
         <Route exact path='/' render={() => (
-          <Home />
+          <div>
+            <Home />
+            <LastStoriesList />
+          </div>
         )} />
         <Route path='/stories' render={() => (
           <StoriesType />
@@ -72,6 +76,12 @@ class App extends Component {
         <Route path='/imaginationStories' render={() => (
           <ImaginationStories />
         )} />
+        {/* <Route path='/newStory' render={() => (
+          <AddStoryForm />
+        )} /> */}
+        <AuthenticatedRoute user={user} path='/newStory' render={() => (
+          <AddStoryForm user={user} />
+          )} />
         <Route path='/story/:id' render={() => (
           <Story />
         )} />
