@@ -11,6 +11,7 @@ import ChangePassword from './auth/components/ChangePassword'
 import AlertDismissible from './auth/components/AlertDismissible'
 import LastStoriesList from './components/LastStoriesList';
 import Home from './Home'
+import StoriesType from './components/StoriesType'
 class App extends Component {
   constructor () {
     super()
@@ -52,6 +53,9 @@ class App extends Component {
             <ChangePassword alert={this.alert} user={user} />
           )} />
         </main>
+        <Route path='/stories' render={() => (
+          <StoriesType />
+        )} />
         <Home />
         <LastStoriesList stories={stories}/>
       </React.Fragment>
