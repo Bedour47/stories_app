@@ -150,6 +150,8 @@ router.get('/stories/:story_id/comments', function(req, res) {
 // CREATE
 // POST /stories
 router.post('/stories', requireToken, (req, res, next) => {
+  console.log(req.body)
+  console.log('user', req.user.id)
     // set owner of new story to be current user
     req.body.story.owner = req.user.id
   

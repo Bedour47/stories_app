@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import apiUrl from '../../apiConfig';
-import StoryItem from '../profile/StoryItem';
+import StoryItem from './StoryItem';
 
 export default class TrueStories extends Component {
     constructor(props) {

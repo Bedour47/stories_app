@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import StoryItem from './profile/StoryItem';
+import StoryItem from './stories/StoryItem';
 import apiUrl from '../apiConfig';
 import axios from 'axios'
 

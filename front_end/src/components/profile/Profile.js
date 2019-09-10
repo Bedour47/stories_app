@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import StoryList from './StoryList'
+import StoryList from '../stories/StoryList'
 export default class Profile extends Component {
     render() {
         return (
