@@ -29,8 +29,19 @@ const alwaysOptions = (
 
 const Header = ({ user }) => (
   <header className="main-header">
-    <button><Link to="/">Stories</Link></button>
-    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+                     <div class="container">
+                     <button class="btn btn-primary marg"><Link to="/stories">View Stories</Link></button>
+                       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                         <span class="navbar-toggler-icon"></span>
+                       </button>
+                       <div class="collapse navbar-collapse" id="navbarResponsive">
+                           <button class="btn btn-primary " id="sinIn"><Link to="/sign-in">Sign In</Link></button>
+                       </div>
+                       <button class="btn btn-primary" id="home"><Link to="/">Home</Link></button>
+
+                     </div>
+                   </nav>
     <nav>
       { user && <span>Welcome, {user.username}</span>}
       { user ? authenticatedOptions : unauthenticatedOptions }
