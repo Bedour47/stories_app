@@ -5,11 +5,9 @@ export default class StoriesType extends Component {
         return (
             <div>
                 <div class="row center">
-                {/* <Link to="/sign-up">Sign Up</Link> */}
-                  <button class="waves-effect waves-light btn-large"><Link to="/TrueStory">True Story</Link></button>
-                  <button class="waves-effect waves-light btn-large"><Link to="/ImaginationsStory">Imaginations Story</Link></button>
+                  <button class="waves-effect waves-light btn-large"><Link to="/trueStories">True Story</Link></button>
+                  <button class="waves-effect waves-light btn-large"><Link to="/imaginationStories">Imaginations Story</Link></button>
                 </div>
-             
             </div>
         )
     }
