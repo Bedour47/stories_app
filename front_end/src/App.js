@@ -12,9 +12,12 @@ import AlertDismissible from './auth/components/AlertDismissible'
 import LastStoriesList from './components/LastStoriesList';
 import StoryList from './components/profile/StoryList';
 import Home from './Home'
+
+import StoriesType from './components/StoriesType'
 import TrueStories from './components/stories/TrueStories'
 import Story from './components/Story'
 import ImaginationStories from './components/stories/ImaginationStories';
+
 class App extends Component {
   constructor () {
     super()
@@ -56,11 +59,12 @@ class App extends Component {
             <ChangePassword alert={this.alert} user={user} />
           )} />
         </main>
+
         <Route exact path='/' render={() => (
           <Home />
         )} />
         <Route path='/stories' render={() => (
-          <StoryList />
+          <StoriesType />
         )} />
         <Route path='/trueStories' render={() => (
           <TrueStories />
@@ -72,6 +76,7 @@ class App extends Component {
           <Story />
         )} />
         
+
       </React.Fragment>
     )
   }

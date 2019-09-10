@@ -28,6 +28,7 @@
     "make-standard": "eslint --fix ./src;exit 0",
     "nag": "eslint ./src;exit 0",
     "deploy": "sh scripts/deploy.sh"
+    
   },
   "jest": {
     "collectCoverageFrom": [
