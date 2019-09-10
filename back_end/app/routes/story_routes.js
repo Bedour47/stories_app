@@ -48,6 +48,37 @@ router.get('/', function(req, res){
     });
 });
 
+//--------------------------------------------------------------------
+
+// Get All Stories => type = true
+router.get('/stories/trueStories', function(req, res){
+  Story.find({type: 'true'})
+  // Return all Stories as an Array
+  .then(function(stories) {
+    res.status(200).json({ stories: stories });
+  })
+  // Catch any errors that might occur
+  .catch(function(error) {
+    res.status(500).json({ error: error });
+  });
+});
+
+
+// Get All Stories => type = imagination
+router.get('/stories/imaginationStories', function(req, res){
+  Story.find({type: 'imagination'})
+  // Return all Stories as an Array
+  .then(function(stories) {
+    res.status(200).json({ stories: stories });
+  })
+  // Catch any errors that might occur
+  .catch(function(error) {
+    res.status(500).json({ error: error });
+  });
+});
+
+//---------------------------------------------------------------------
+
 
 /**
  * Action:      SHOW
@@ -55,7 +86,7 @@ router.get('/', function(req, res){
  * URI:         /api/articles/5d664b8b68b4f5092aba18e9
  * Description: Get An Article by Article ID
  */
-router.get('/stories/:id', function(req, res) {
+router.get('/story/:id', function(req, res) {
     Story.findById(req.params.id)
       .then(function(story) {
         if(story) {

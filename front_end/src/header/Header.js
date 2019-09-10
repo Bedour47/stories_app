@@ -13,10 +13,12 @@ const authenticatedOptions = (
 )
 
 const unauthenticatedOptions = (
-  <React.Fragment>
+  <div>
     {/* <Link to="/sign-up">Sign Up</Link>
     <Link to="/sign-in">Sign In</Link> */}
-  </React.Fragment>
+    {/* <button class="waves-effect waves-light btn-large"><Link to="/stories">View Stories</Link></button>
+    <button class="waves-effect waves-light btn-large"><Link to="/sign-in">Sign In</Link></button> */}
+    </div>
 )
 
 const alwaysOptions = (

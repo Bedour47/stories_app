@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link, Route } from 'react-router-dom'
 import './Home.scss'
 export default class Home extends Component {
+  
     render() {
         return (
             <body>
@@ -14,7 +15,6 @@ export default class Home extends Component {
                   <h5 class="header col s12 light">Throw the hottest parties</h5>
                 </div>
                 <div class="row center">
-                {/* <Link to="/sign-up">Sign Up</Link> */}
                   <button class="waves-effect waves-light btn-large"><Link to="/stories">View Stories</Link></button>
                   <button class="waves-effect waves-light btn-large"><Link to="/sign-in">Sign In</Link></button>
                 </div>
