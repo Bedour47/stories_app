@@ -64,7 +64,7 @@ class App extends Component {
         <Route exact path='/' render={() => (
           <div>
             <Home />
-            <LastStoriesList />
+            
           </div>
         )} />
         <Route path='/stories' render={() => (

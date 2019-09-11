@@ -5,8 +5,8 @@ export default class StoriesType extends Component {
         return (
             <div>
                 <div class="row center">
-                  <button class="waves-effect waves-light btn-large"><Link to="/trueStories">True Story</Link></button>
-                  <button class="waves-effect waves-light btn-large"><Link to="/imaginationStories">Imaginations Story</Link></button>
+                  <Link to="/trueStories"><button class="btn btn-primary">True Story</button></Link>
+                  <Link to="/imaginationStories"><button class="btn btn-primary">Imaginations Story</button></Link>
                 </div>
             </div>
         )

@@ -23,6 +23,11 @@ export default class TrueStories extends Component {
         const allStories = this.state.stories.map((story, index) => {
             return <StoryItem story={story} key={index} /> 
         })
-        return allStories;
+        return (
+          <div class="card-group">
+
+          {allStories}
+          </div>
+          );
     }
 }

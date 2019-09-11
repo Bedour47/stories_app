@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link  } from 'react-router-dom'
+
 
 import { signIn } from '../api'
 import messages from '../messages'
@@ -58,7 +59,9 @@ class SignIn extends Component {
           placeholder="Password"
           onChange={this.handleChange}
         />
-        <button type="submit">Sign In</button>
+
+        <button class="btn btn-primary mb-3"type="submit">Sign In</button>
+        <Link to="sign-up" id="signUp"><button class="btn btn-primary ">Sign UP!</button></Link>
       </form>
     )
   }
