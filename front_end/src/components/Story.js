@@ -10,21 +10,28 @@ export default class Story extends Component {
       story: ''
     };
   }
-  // componentDidMount() {
-  //   const { handle } = this.props.params
+  
+  componentDidMount() {
+    console.log(this.props.match.params.id)
+    const handle = this.props.match.params.id
 
-  //   axios.get(`${apiUrl}/story/${handle}`)
-  //     .then((response) => {
-  //       this.setState({ story: response.data.story});
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     })
-  //   }
-  render() {
-    return <StoryItem story = {
-      this.state.story
+    axios.get(`${apiUrl}/story/${handle}`)
+      .then((response) => {
+        console.log(response.data.story)
+        this.setState({ story: response.data.story});
+      })
+      .catch((err) => {
+        console.log(err);
+      })
     }
-    />
+
+  render() {
+    return(
+      <div>
+          <p>{this.state.story.title}</p>
+          <p>{this.state.story.content}</p>
+          <p>{this.state.story.img}</p>
+      </div>
+    )
   }
 }

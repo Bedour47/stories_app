@@ -18,6 +18,7 @@ import TrueStories from './components/stories/TrueStories'
 import Story from './components/Story'
 import ImaginationStories from './components/stories/ImaginationStories';
 import AddStoryForm from './components/forms/AddStoryForm';
+import Profile from './components/profile/Profile';
 
 class App extends Component {
   constructor () {
@@ -82,10 +83,12 @@ class App extends Component {
         <AuthenticatedRoute user={user} path='/newStory' render={() => (
           <AddStoryForm user={user} />
           )} />
-        <Route path='/story/:id' render={() => (
-          <Story />
+        <Route path='/story/:id' render={(props) => (
+          <Story {...props} />
         )} />
-        
+        <Route path='/profile/:id' render={(props) => (
+          <Profile {...props} />
+        )} />
 
       </React.Fragment>
     )
