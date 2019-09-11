@@ -18,7 +18,9 @@ import TrueStories from './components/stories/TrueStories'
 import Story from './components/Story'
 import ImaginationStories from './components/stories/ImaginationStories';
 import AddStoryForm from './components/forms/AddStoryForm';
+import UpdateStoryForm from './components/forms/UpdateStoryForm';
 import Profile from './components/profile/Profile';
+import AddCommentForm from './components/forms/UpdateStoryForm';
 
 class App extends Component {
   constructor () {
@@ -30,7 +32,11 @@ class App extends Component {
     }
   }
 
-  setUser = user => this.setState({ user })
+  setUser = user =>{ this.setState({ user })
+localStorage.setItem('userToken',user.token)
+localStorage.setItem('user',user._id)
+
+}
 
   clearUser = () => this.setState({ user: null })
 
@@ -83,9 +89,18 @@ class App extends Component {
         <AuthenticatedRoute user={user} path='/newStory' render={() => (
           <AddStoryForm user={user} />
           )} />
-        <Route path='/story/:id' render={(props) => (
+        <AuthenticatedRoute user={user} path='/updateStory/:id' render={(props) => (
+          <UpdateStoryForm user={user} {...props}/>
+          )} />
+        <AuthenticatedRoute user={user} path='/addComment' render={() => (
+          <AddCommentForm user={user} />
+          )} />
+        <Route user={user} path='/story/:id' render={(props) => (
+          <Story user={user} {...props} />
+          )} />
+        {/* <Route path='/story/:id' render={(props) => (
           <Story {...props} />
-        )} />
+        )} /> */}
         <Route path='/profile/:id' render={(props) => (
           <Profile {...props} />
         )} />

@@ -126,7 +126,7 @@ router.get('/stories/:story_id/comments', function(req, res) {
           let storyComments = comments.filter( comment => {
             return comment.commentedAt == story.id
           });
-          res.status(200).json({ story: story, comments: storyComments });
+          res.status(200).json({ comments: storyComments });
         });
 
         
@@ -194,8 +194,8 @@ router.patch('/stories/:id', requireToken, removeBlanks, (req, res, next) => {
 
 // DESTROY
 // DELETE /examples/5a7db6c74d55bc51bdf39793
-router.delete('/stories/:id', requireToken, (req, res, next) => {
-    Story.findById(req.params.id)
+router.delete('/stories/:story_id', requireToken, (req, res, next) => {
+    Story.findById(req.params.story_id)
       .then(handle404)
       .then(story => {
         // throw an error if current user doesn't own `example`
@@ -208,6 +208,5 @@ router.delete('/stories/:id', requireToken, (req, res, next) => {
       // if an error occurs, pass it to the handler
       .catch(next)
 })
-
 
   module.exports = router

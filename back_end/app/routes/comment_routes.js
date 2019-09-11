@@ -54,6 +54,62 @@ router.get('/comments', function (req, res) {
       });
     });
 });
+//---------------------------------------------------------------------
+router.post('/stories/:story_id/comments', requireToken, (req, res, next) => {
+  // set owner of new comment to be current user
+  req.body.comment.owner = req.user.id
+  req.body.comment.commentedAt = req.params.story_id
+  console.log('body of comment',req.body.comment)
+  Comment.create(req.body.comment)
+    // respond to succesful `create` with status 201 and JSON of new "comment"
+    .then(comment => {
+      res.status(201).json({
+        comment: comment.toObject()
+      })
+    })
+    // if an error occurs, pass it off to our error handler
+    // the error handler needs the error message and the `res` object so that it
+    // can send an error message back to the client
+    .catch(next)
+})
+
+
+// router.post('/stories/:story_id/comments', function(req, res) {
+//   Story.findById(req.params.story_id)
+//     .then(function(story) {
+//       console.log(story);
+//       if(story) {
+//         req.body.comment.owner = req.user.id
+//         Comment.create(req.body.comment)
+//         // respond to succesful `create` with status 201 and JSON of new "comment"
+//         .then(comment => {
+//           res.status(201).json({
+//             comment: comment.toObject()
+//           })
+//         })
+//         // if an error occurs, pass it off to our error handler
+//         // the error handler needs the error message and the `res` object so that it
+//         // can send an error message back to the client
+//         .catch(next)
+//       } else {
+//         // If we couldn't find a document with the matching ID
+//         res.status(404).json({
+//           error: {
+//             name: 'DocumentNotFoundError',
+//             message: 'The provided ID doesn\'t match any documents'
+//           }
+//         });
+//       }
+//     })
+//     // Catch any errors that might occur
+//     .catch(function(error) {
+//       res.status(500).json({ error: error });
+//     });
+// });
+
+//----------------------------------------------------------------------
+
+
 // CREATE
 // POST /comment
 router.post('/comments', requireToken, (req, res, next) => {
@@ -101,8 +157,8 @@ router.patch('/comments/:id', requireToken, removeBlanks, (req, res, next) => {
 
 // DESTROY
 // DELETE /examples/5a7db6c74d55bc51bdf39793
-router.delete('/comments/:id', requireToken, (req, res, next) => {
-  Story.findById(req.params.id)
+router.delete('/stories/:story_id/comments/:comment_id', requireToken, (req, res, next) => {
+  Comment.findById(req.params.comment_id)
     .then(handle404)
     .then(comment => {
       // throw an error if current user doesn't own `example`

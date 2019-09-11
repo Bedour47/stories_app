@@ -17,7 +17,6 @@ export default class AddStoryForm extends Component {
             title: '',
             content: '',
             img: '',
-            // story_completed: false
         }
 
     }
@@ -54,9 +53,7 @@ export default class AddStoryForm extends Component {
                 type: this.state.type,
                 title: this.state.title,
                 content: this.state.content,
-                img: this.state.img,
-                // story_completed: this.state.story_completed
-        
+                img: this.state.img,       
             }
         }
 
@@ -74,7 +71,6 @@ export default class AddStoryForm extends Component {
             title: '',
             content: '',
             img: '',
-            // story_completed: false
         })
     }
 
