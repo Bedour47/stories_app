@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import apiUrl from '../../apiConfig'
 import axios from 'axios'
-import StoryItem from './StoryItem';
+import LastStoriesItem from './LastStoriesItem';
 
 export default class LastStoriesList extends Component {
     constructor(props) {
@@ -24,9 +24,14 @@ export default class LastStoriesList extends Component {
 
     render() {
         const allStories = this.state.stories.map((story, index) => {
-            return <StoryItem story={story} key={index} />
+            return <LastStoriesItem story={story} key={index} />
         })
         const lastStories = allStories.slice(-3);
-        return lastStories;
+        return (
+          <div class="card-group">
+
+          {lastStories}
+          </div>
+        )
     }
 }

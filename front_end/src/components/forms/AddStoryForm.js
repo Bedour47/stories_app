@@ -103,14 +103,17 @@ export default class AddStoryForm extends Component {
                        </div>
 
                         <input  type="text"
+                                placeholder="title"
                                 value={this.state.title}
                                 onChange={this.onChangeStoryTitle}
                                 />
                         <input  type="text"
+                                placeholder="content"
                                 value={this.state.content}
                                 onChange={this.onChangeStoryContent}
                                 />
                         <input  type="text"
+                                placeholder="img"
                                 value={this.state.img}
                                 onChange={this.onChangeStoryImg}
                                 />

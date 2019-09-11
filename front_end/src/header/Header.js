@@ -26,7 +26,7 @@ const alwaysOptions = (
 )
 
 const Header = ({ user }) => (
-  <header className="main-header">
+  <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
                      <div class="container">
                    <Link to="/stories"><button class="btn btn-primary marg">View Stories</button></Link>

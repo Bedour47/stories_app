@@ -10,70 +10,30 @@ export default class Home extends Component {
                    <div class="container">
                      <div class="row align-items-center my-5">
                        <div class="col-lg-7">
-                         <img class="img-fluid rounded mb-4 mb-lg-0" src="https://files.slack.com/files-tmb/TA2AHQDQ8-FN7K1LNDU-81dae5760d/1467453280-4362606_720.jpg" alt="">
+                         <img class="https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwix7e7j8MjkAhWFxoUKHTD6A5oQjRx6BAgBEAQ&url=https%3A%2F%2Fwww.pinterest.com%2Fpin%2F541557923916255732%2F&psig=AOvVaw0ZYBZP5M4hXS-9J-aAeXus&ust=1568295128368238" alt="">
                      </img>
                        </div>
-                       <div class="col-lg-5">
-                         <h1 class="font-weight-light">Business Name or Tagline</h1>
-                         <p>This is a template that is great for small businesses. It doesn't have too much fancy flare to it, but it makes a great use of the standard Bootstrap core components. Feel free to use this template for any project you want!</p>
-                         <a class="btn btn-primary" href="#">Call to Action!</a>
-                       </div>
+                     
                      </div>
-                 
-                     <div class="card text-white bg-secondary my-5 py-4 text-center">
+                     <div class=" text-white my-5 py-4 text-center " >
                        <div class="card-body">
-                         <p class="text-white m-0">This call to action card is a great place to showcase some important information or display a clever tagline!</p>
+                         <h2>This website offer you two types of stories Imaginations and Realty </h2>
+                         <br></br>
+                         <h2 class="text-white m-0">What Should you Read Next?!</h2>
                        </div>
                      </div>
-                 
-                     <div class="row">
-                       <div class="col-md-3 col-sm-6">
-                         <div class="card h-100">
-                           <div class="card-body">
-                             <h2 class="card-title" id="cardOne">Card One</h2>
-                             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
-                           </div>
-                           <div class="card-footer">
-                             <a href="#" class="btn btn-primary btn-sm">More Info</a>
-                           </div>
-                         </div>
-                       </div>
-                       <div class="col-md-3 col-sm-6">
-                         <div class="card h-100">
-                           <div class="card-body">
-                             <h2 class="card-title">Card Two</h2>
-                             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod tenetur ex natus at dolorem enim! Nesciunt pariatur voluptatem sunt quam eaque, vel, non in id dolore voluptates quos eligendi labore.</p>
-                           </div>
-                           <div class="card-footer">
-                             <a href="#" class="btn btn-primary btn-sm">More Info</a>
-                           </div>
-                         </div>
-                       </div>
-                       <div class="col-md-3 col-sm-6">
-                         <div class="card h-100">
-                           <div class="card-body">
-                             <h2 class="card-title">Card Three</h2>
-                             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
-                           </div>
-                           <div class="card-footer">
-                             <a href="#" class="btn btn-primary btn-sm">More Info</a>
-                           </div>
-                         </div>
-                       </div>
-                 
+                     <div>
+                       <h4>Have you checked out Last add Stories?</h4>
+                     <LastStoriesList />  
                      </div>
-                 
-                   </div>
-                   <LastStoriesList />  
-                   <footer class="py-5 bg-dark">
+                    </div>
+                   
+                   <footer class="py-5 ">
                      <div class="container">
-                       <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
+                       <p class="m-0 text-center text-white">Copyright &copy;  2019-2020</p>
                      </div>
                    </footer>
                  
-                   <script src="vendor/jquery/jquery.min.js"></script>
-                   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
                    </div>
                   
 
