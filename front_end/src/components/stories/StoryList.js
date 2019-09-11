@@ -24,6 +24,10 @@ export default class StoryList extends Component {
 
 
         })
-        return allStories
+        return(
+          <div class="row col-md-3 col-sm-6">
+            {allStories}
+          </div>
+        )
     }
 }

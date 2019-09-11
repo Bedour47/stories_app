@@ -53,6 +53,7 @@ localStorage.setItem('user',user._id)
         {alerts.map((alert, index) => (
           <AlertDismissible key={index} variant={alert.type} message={alert.message} />
         ))}
+        
         <main className="container">
           <Route path='/sign-up' render={() => (
             <SignUp alert={this.alert} setUser={this.setUser} />

@@ -24,10 +24,15 @@ export default class TrueStories extends Component {
             return <StoryItem story={story} key={index} /> 
         })
         return (
-          <div class="card-group">
-
+     
+            <div class="row">
+             
+            
           {allStories}
           </div>
+          
+       
+         
           );
     }
 }
