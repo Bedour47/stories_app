@@ -39,9 +39,10 @@ class SignIn extends Component {
     const { email, password } = this.state
 
     return (
+     
       <form className='auth-form' onSubmit={this.onSignIn}>
         <h3>Sign In</h3>
-        <label htmlFor="email">Email</label>
+        {/* <label htmlFor="email">Email</label> */}
         <input
           required
           type="email"
@@ -50,7 +51,7 @@ class SignIn extends Component {
           placeholder="Email"
           onChange={this.handleChange}
         />
-        <label htmlFor="password">Password</label>
+        {/* <label htmlFor="password">Password</label> */}
         <input
           required
           name="password"
@@ -60,9 +61,10 @@ class SignIn extends Component {
           onChange={this.handleChange}
         />
 
-        <button class="btn btn-primary mb-3"type="submit">Sign In</button>
+        <button class="btn btn-primary"type="submit">Sign In</button>
         <Link to="sign-up" id="signUp"><button class="btn btn-primary ">Sign UP!</button></Link>
       </form>
+     
     )
   }
 }

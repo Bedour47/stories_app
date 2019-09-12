@@ -149,7 +149,7 @@ export default class Story extends Component {
         </div>
           {/* show all story's comments*/}
         <div>
-          <h4>Comments:</h4>
+          <p className='commentSaction'>Comments:</p>
           {this.state.comments.map(comment => <Comment storyID={this.props.match.params.id} comment={comment} user={this.props.user} />)}
         </div>
           {/* view the comment form*/}

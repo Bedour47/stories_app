@@ -8,22 +8,18 @@ export default class Home extends Component {
         return (
                    <div>
                    <div class="container">
-                     <div class="row align-items-center my-5">
-                       <div class="col-lg-7">
-                         <img class="https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwix7e7j8MjkAhWFxoUKHTD6A5oQjRx6BAgBEAQ&url=https%3A%2F%2Fwww.pinterest.com%2Fpin%2F541557923916255732%2F&psig=AOvVaw0ZYBZP5M4hXS-9J-aAeXus&ust=1568295128368238" alt="">
-                     </img>
-                       </div>
-                     
+                     <div class="row p-2">
+                      
                      </div>
-                     <div class=" text-white my-5 py-4 text-center " >
-                       <div class="card-body">
+                     <div class=" text-white text-center " >
+                       <div class="card-body p-5">
                          <h2>This website offer you two types of stories Imaginations and Realty </h2>
-                         <br></br>
+                         <br></br><br></br>
                          <h2 class="text-white m-0">What Should you Read Next?!</h2>
                        </div>
                      </div>
                      <div>
-                       <h4>Have you checked out Last add Stories?</h4>
+                       <h4>Have you checked out last add Stories?</h4>
                      <LastStoriesList />  
                      </div>
                     </div>
@@ -33,8 +29,7 @@ export default class Home extends Component {
                        <p class="m-0 text-center text-white">Copyright &copy;  2019-2020</p>
                      </div>
                    </footer>
-                 
-                   </div>
+                 </div>
                   
 
         )
