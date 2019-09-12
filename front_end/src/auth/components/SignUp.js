@@ -43,10 +43,12 @@ class SignUp extends Component {
     const { email, username, password, passwordConfirmation, img, bio } = this.state
 
     return (
-      <form className='auth-form' onSubmit={this.onSignUp}>
+      <div class="form">
+        
+      <form className='auth-form' id="SU" onSubmit={this.onSignUp}>
         <h3>Sign Up</h3>
 
-        <label htmlFor="email">Email</label>
+        {/* <label htmlFor="email">Email</label> */}
         <input
           required
           name="email"
@@ -55,7 +57,7 @@ class SignUp extends Component {
           placeholder="Email"
           onChange={this.handleChange}
         />
-        <label htmlFor="username">Username</label>
+        {/* <label htmlFor="username">Username</label> */}
         <input
           required
           name="username"
@@ -64,7 +66,7 @@ class SignUp extends Component {
           placeholder="Username"
           onChange={this.handleChange}
         />
-        <label htmlFor="password">Password</label>
+        {/* <label htmlFor="password">Password</label> */}
         <input
           required
           name="password"
@@ -73,7 +75,7 @@ class SignUp extends Component {
           placeholder="Password"
           onChange={this.handleChange}
         />
-        <label htmlFor="passwordConfirmation">Confirm Password</label>
+        {/* <label htmlFor="passwordConfirmation">Confirm Password</label> */}
         <input
           required
           name="passwordConfirmation"
@@ -82,7 +84,7 @@ class SignUp extends Component {
           placeholder="Confirm Password"
           onChange={this.handleChange}
         />
-        <label htmlFor="img">Image</label>
+        {/* <label htmlFor="img">Image</label> */}
         <input
           name="img"
           value={img}
@@ -90,7 +92,7 @@ class SignUp extends Component {
           placeholder="Image"
           onChange={this.handleChange}
         />
-        <label htmlFor="bio">bio</label>
+        {/* <label htmlFor="bio">bio</label> */}
         <input
           name="bio"
           value={bio}
@@ -100,6 +102,7 @@ class SignUp extends Component {
         />
         <button type="submit">Sign Up</button>
       </form>
+      </div>
     )
   }
 }
