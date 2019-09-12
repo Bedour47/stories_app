@@ -3,6 +3,7 @@ import StoryItem from './stories/StoryItem';
 import apiUrl from '../apiConfig';
 import axios from 'axios'
 import Comment from './stories/Comment';
+import { Link, Route } from 'react-router-dom'
 
 export default class Story extends Component {
   constructor(props) {
@@ -104,14 +105,14 @@ export default class Story extends Component {
 
   render() {
     const userObject = localStorage.getItem('user')
-    let deleteStoryButton = ''
+    let manageStoryButtons = ''
     console.log(userObject);
     
     if(this.props.user && userObject == this.state.story.owner){
-      deleteStoryButton = (
+      manageStoryButtons = (
         <div>
           <button class="btn btn-primary" onClick={this.deleteStory}>Delete Story</button>
-          <button class="btn btn-primary">Update Story</button>
+          <Link to={`/updateStory/${this.state.story._id}`}><button className="btn btn-primary">Update Story</button></Link>
         </div>
       )
     }
@@ -142,7 +143,7 @@ export default class Story extends Component {
               <div class="card-body">
                 <h5 class="card-title">{this.state.story.title}</h5>
                 <p class="card-text">{this.state.story.content}</p>
-                {deleteStoryButton}
+                {manageStoryButtons}
             </div>
           </div>
         </div>

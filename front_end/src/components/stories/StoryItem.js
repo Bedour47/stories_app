@@ -10,7 +10,7 @@ export default class StoryItem extends Component {
               <div className="card-body" id='cardBody'>
                 <h5 className="card-title">{this.props.story.title}</h5>
                 {/* <p className="card-text">{this.props.story.content}</p> */}
-                <Link to="/story/:id"><button className="btn btn-primary ">Read More!</button></Link>
+                <Link to={`/story/${this.props.story._id}`}><button className="btn btn-primary ">Read More!</button></Link>
               </div>
             </div>
           </div>
