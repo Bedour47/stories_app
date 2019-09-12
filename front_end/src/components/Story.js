@@ -108,7 +108,12 @@ export default class Story extends Component {
     console.log(userObject);
     
     if(this.props.user && userObject == this.state.story.owner){
-      deleteStoryButton = (<button onClick={this.deleteStory}>Delete Story</button>)
+      deleteStoryButton = (
+        <div>
+          <button class="btn btn-primary" onClick={this.deleteStory}>Delete Story</button>
+          <button class="btn btn-primary">Update Story</button>
+        </div>
+      )
     }
     {/* view the comment form if the user is log-in */}
     let addCommentForm = ''
@@ -122,7 +127,7 @@ export default class Story extends Component {
                           placeholder="comment"
                           onChange={this.onChangeComment}
                           />
-              <input type="submit" value="Submit"/>
+              <input class="btn btn-primary" type="submit" value="Submit"/>
           </form> 
           </div>
   )}
@@ -131,15 +136,21 @@ export default class Story extends Component {
     return(
       <div>
           {/* show the story*/}
-          <p>title: {this.state.story.title}</p>
-          <p>content: {this.state.story.content}</p>
-          <p>{this.state.story.img}</p>
-          <p>by: {this.state.story.owner}</p>
-          {deleteStoryButton}
-
+          <div>
+            <div class="card storyCard" >
+              <img src={this.state.story.img} class="card-img" alt="lo"/>
+              <div class="card-body">
+                <h5 class="card-title">{this.state.story.title}</h5>
+                <p class="card-text">{this.state.story.content}</p>
+                {deleteStoryButton}
+            </div>
+          </div>
+        </div>
           {/* show all story's comments*/}
+        <div>
+          <h4>Comments:</h4>
           {this.state.comments.map(comment => <Comment storyID={this.props.match.params.id} comment={comment} user={this.props.user} />)}
-
+        </div>
           {/* view the comment form*/}
           {addCommentForm}
       </div>

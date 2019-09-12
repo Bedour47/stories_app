@@ -6,16 +6,14 @@ export default class StoryItem extends Component {
         return (
           <div class="col-3">
             <div className="card " id='cardImg' >
-  <img src={this.props.story.img} className="card-img-top" alt="lo"/>
-  <div className="card-body" id='cardBody'>
-    <h5 className="card-title">{this.props.story.title}</h5>
-    <p className="card-text">{this.props.story.content}</p>
-    <Link to="/story/:id"><button className="btn btn-primary ">Read More !</button></Link>
-  </div>
-</div>
- </div>
-
-
+              <img src={this.props.story.img} className="card-img-top" alt="image"/>
+              <div className="card-body" id='cardBody'>
+                <h5 className="card-title">{this.props.story.title}</h5>
+                {/* <p className="card-text">{this.props.story.content}</p> */}
+                <Link to="/story/:id"><button className="btn btn-primary ">Read More!</button></Link>
+              </div>
+            </div>
+          </div>
         )
     }
 }

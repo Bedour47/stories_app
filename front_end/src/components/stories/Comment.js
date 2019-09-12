@@ -29,14 +29,17 @@ export default class Comment extends Component {
         console.log('userObject:', userObject)
 
         if(this.props.user && userObject == this.props.comment.owner){
-            deleteCommentButton = (<button onClick={this.deleteComment}>Delete Comment</button>)
+            // <button onClick={this.deleteComment}>Delete Comment</button>
+            deleteCommentButton = (<input class="deleteButton" onClick={this.deleteComment} width="25px" height="25px" type="image" src="https://img.icons8.com/ios-glyphs/80/000000/delete-sign.png" />)
         }
         return (
-            <div>
-                <p>comment: {this.props.comment.comment}</p>
-                <p>by:{this.props.comment.owner}</p>
-                {deleteCommentButton}
-            </div>
+            // <div class="col-3">
+                <div className="card comments">
+                    <div>
+                        <p className="card-title">{this.props.comment.owner} reply: {this.props.comment.comment} <span>{deleteCommentButton}</span></p>
+                    </div>
+                </div>
+        //   </div>
         )
     }
 }

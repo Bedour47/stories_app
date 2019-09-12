@@ -24,15 +24,9 @@ export default class TrueStories extends Component {
             return <StoryItem story={story} key={index} /> 
         })
         return (
-     
             <div class="row">
-             
-            
-          {allStories}
-          </div>
-          
-       
-         
+              {allStories}
+            </div>
           );
     }
 }

@@ -23,6 +23,10 @@ export default class ImaginationStories extends Component {
         const allStories = this.state.stories.map((story, index) => {
             return <StoryItem story={story} key={index} /> 
         })
-        return allStories;
+        return (
+          <div class="row">
+          {allStories}
+          </div>
+        )
     }
 }

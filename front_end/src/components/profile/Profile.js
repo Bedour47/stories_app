@@ -36,14 +36,21 @@ export default class Profile extends Component {
         
         return(
             <div>
-                <div>
-                    <p>{this.state.user.username}</p>
-                    <img src={this.state.user.img} class="card-img-top" alt="profile pic"/>
-                </div>
-                <div>
-                    {allProfileStories}
-                </div>
-            </div>
+                <div class="row">
+                  <div class="col-3">
+                      <div className="card " id='cardImg' >
+                        <div className="card-body" id='cardBody'>
+                            <img src={this.state.user.img} class="card-img-top" alt="profile pic"/>
+                            <p className="card-title">user:{this.state.user.username}</p>
+                            <p className="card-title">bio:{this.state.user.bio}</p>
+                        </div>
+                     </div>
+                  </div>
+              </div>
+              <div class="row">
+                  {allProfileStories}
+              </div>
+          </div>    
         )
     }
 }
