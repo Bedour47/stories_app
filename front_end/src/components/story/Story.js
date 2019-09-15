@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
-import StoryItem from './stories/StoryItem';
-import apiUrl from '../apiConfig';
+import apiUrl from '../../apiConfig';
 import axios from 'axios'
-import Comment from './stories/Comment';
-import { Link, Route } from 'react-router-dom'
+import Comment from './Comment';
+import { Link } from 'react-router-dom'
 
 export default class Story extends Component {
   constructor(props) {

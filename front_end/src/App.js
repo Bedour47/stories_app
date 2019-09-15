@@ -9,18 +9,15 @@ import SignIn from './auth/components/SignIn'
 import SignOut from './auth/components/SignOut'
 import ChangePassword from './auth/components/ChangePassword'
 import AlertDismissible from './auth/components/AlertDismissible'
-import LastStoriesList from './components/stories/LastStoriesList';
-import StoryList from './components/stories/StoryList';
 import Home from './Home'
 
 import StoriesType from './components/StoriesType'
 import TrueStories from './components/stories/TrueStories'
-import Story from './components/Story'
+import Story from './components/story/Story'
 import ImaginationStories from './components/stories/ImaginationStories';
 import AddStoryForm from './components/forms/AddStoryForm';
 import UpdateStoryForm from './components/forms/UpdateStoryForm';
 import Profile from './components/profile/Profile';
-import AddCommentForm from './components/forms/UpdateStoryForm';
 
 class App extends Component {
   constructor () {
@@ -45,7 +42,7 @@ localStorage.setItem('user',user._id)
   }
 
   render () {
-    const { alerts, user, stories } = this.state
+    const { alerts, user } = this.state
 
     return (
       <React.Fragment>
@@ -72,7 +69,6 @@ localStorage.setItem('user',user._id)
         <Route exact path='/' render={() => (
           <div>
             <Home />
-            
           </div>
         )} />
         <Route path='/stories' render={() => (
@@ -84,24 +80,15 @@ localStorage.setItem('user',user._id)
         <Route path='/imaginationStories' render={() => (
           <ImaginationStories />
         )} />
-        {/* <Route path='/newStory' render={() => (
-          <AddStoryForm />
-        )} /> */}
         <AuthenticatedRoute user={user} path='/newStory' render={() => (
           <AddStoryForm user={user} />
           )} />
         <AuthenticatedRoute user={user} path='/updateStory/:id' render={(props) => (
           <UpdateStoryForm user={user} {...props}/>
           )} />
-        <AuthenticatedRoute user={user} path='/addComment' render={() => (
-          <AddCommentForm user={user} />
-          )} />
         <Route user={user} path='/story/:id' render={(props) => (
           <Story user={user} {...props} />
           )} />
-        {/* <Route path='/story/:id' render={(props) => (
-          <Story {...props} />
-        )} /> */}
         <Route path='/profile/:id' render={(props) => (
           <Profile {...props} />
         )} />

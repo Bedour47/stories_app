@@ -89,7 +89,7 @@ export default class AddStoryForm extends Component {
                                 value="true"
                                 checked={this.state.type==='true'}
                                 onChange={this.onChangeStoryType}
-                                />True
+                                />Reality
                         <input  type="radio"
                                 name="storyType"
                                 id="imagination"

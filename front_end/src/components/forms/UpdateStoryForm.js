@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios';
 import apiUrl from '../../apiConfig';
 
-export default class EditProduct extends Component {
+export default class UpdateStoryForm extends Component {
     constructor(props){
         super(props)
 
@@ -105,7 +105,7 @@ export default class EditProduct extends Component {
                                 value={this.state.type}
                                 checked={this.state.type==='true'}
                                 onChange={this.onChangeStoryType}
-                                />True
+                                />Reality
                         <input  type="radio"
                                 name="storyType"
                                 id="imaginations"
