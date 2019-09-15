@@ -2,7 +2,7 @@
 
 ## Installation
 
-No installation required, click [here]() to visit the Stories App!
+No installation required, click [here](https://bedour47.github.io/stories/#/) to visit the Stories App!
 
 ## Overview
 
