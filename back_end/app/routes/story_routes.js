@@ -31,9 +31,10 @@ const router = express.Router()
 
 
 router.get('/', function(req, res){
-    res.json({ message: 'Home Page' });
+    res.json({ message: 'Stories App API' });
   });
   
+//--------------------------------------------------------------------
 
 // Get All Stories
   router.get('/stories', function(req, res){
@@ -79,13 +80,7 @@ router.get('/stories/imaginationStories', function(req, res){
 
 //---------------------------------------------------------------------
 
-
-/**
- * Action:      SHOW
- * Method:      GET
- * URI:         /api/articles/5d664b8b68b4f5092aba18e9
- * Description: Get An Article by Article ID
- */
+//Get a Story by ID
 router.get('/story/:id', function(req, res) {
     Story.findById(req.params.id)
       .then(function(story) {
@@ -107,14 +102,10 @@ router.get('/story/:id', function(req, res) {
       });
   });
 
-  /**
- * Action:      SHOW
- * Method:      GET
- * URI:         /api/articles/5d664b8b68b4f5092aba18e9
- * Description: Get An Article by Article ID
- */
 
-///stories/5d70f5e08e3d9a715039b70a/comments
+//--------------------------------------------------------------------
+
+// Get All Comments for a Story by the Story ID
 router.get('/stories/:story_id/comments', function(req, res) {
   Story.findById(req.params.story_id)
     .then(function(story) {
@@ -146,9 +137,10 @@ router.get('/stories/:story_id/comments', function(req, res) {
     });
 });
 
+//--------------------------------------------------------------------
 
 // CREATE
-// POST /stories
+// POST a Story
 router.post('/stories', requireToken, (req, res, next) => {
   console.log(req.body)
   console.log('user', req.user.id)
@@ -166,10 +158,10 @@ router.post('/stories', requireToken, (req, res, next) => {
       .catch(next)
   })
 
-
+//--------------------------------------------------------------------
 
 // UPDATE
-// PATCH /examples/5a7db6c74d55bc51bdf39793
+// PATCH a Story
 router.patch('/stories/:id', requireToken, removeBlanks, (req, res, next) => {
     // if the client attempts to change the `owner` property by including a new
     // owner, prevent that by deleting that key/value pair
@@ -191,9 +183,10 @@ router.patch('/stories/:id', requireToken, removeBlanks, (req, res, next) => {
       .catch(next)
   })
 
+//--------------------------------------------------------------------
 
 // DESTROY
-// DELETE /examples/5a7db6c74d55bc51bdf39793
+// DELETE a Story
 router.delete('/stories/:story_id', requireToken, (req, res, next) => {
     Story.findById(req.params.story_id)
       .then(handle404)

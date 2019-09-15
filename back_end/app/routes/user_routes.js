@@ -152,14 +152,10 @@ router.delete('/sign-out', requireToken, (req, res, next) => {
     .then(() => res.sendStatus(204))
     .catch(next)
 })
-/**
- * Action:      SHOW
- * Method:      GET
- * URI:         /api/articles/5d664b8b68b4f5092aba18e9
- * Description: Get An Article by Article ID
- */
 
+//--------------------------------------------------------------------
 
+//Get user Profile by ID
 router.get('/profile/:id', function(req, res) {
   User.findById(req.params.id)
     .then(function(user) {

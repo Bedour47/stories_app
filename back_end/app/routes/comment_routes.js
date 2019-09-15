@@ -33,12 +33,15 @@ const router = express.Router()
 
 router.get('/', function (req, res) {
   res.send({
-    message: 'Home Page test'
+    message: 'Stories App API'
   });
 });
 
 
-// Get All comment
+//---------------------------------------------------------------------------------
+
+// Get All Comments
+
 router.get('/comments', function (req, res) {
   Comment.find()
     // Return all comment as an Array
@@ -54,7 +57,11 @@ router.get('/comments', function (req, res) {
       });
     });
 });
-//---------------------------------------------------------------------
+
+//---------------------------------------------------------------------------------
+
+// CREATE
+// POST /comment at a story
 router.post('/stories/:story_id/comments', requireToken, (req, res, next) => {
   // set owner of new comment to be current user
   req.body.comment.owner = req.user.id
@@ -73,90 +80,35 @@ router.post('/stories/:story_id/comments', requireToken, (req, res, next) => {
     .catch(next)
 })
 
+//----------------------------------------------------------------------
 
-// router.post('/stories/:story_id/comments', function(req, res) {
-//   Story.findById(req.params.story_id)
-//     .then(function(story) {
-//       console.log(story);
-//       if(story) {
-//         req.body.comment.owner = req.user.id
-//         Comment.create(req.body.comment)
-//         // respond to succesful `create` with status 201 and JSON of new "comment"
-//         .then(comment => {
-//           res.status(201).json({
-//             comment: comment.toObject()
-//           })
-//         })
-//         // if an error occurs, pass it off to our error handler
-//         // the error handler needs the error message and the `res` object so that it
-//         // can send an error message back to the client
-//         .catch(next)
-//       } else {
-//         // If we couldn't find a document with the matching ID
-//         res.status(404).json({
-//           error: {
-//             name: 'DocumentNotFoundError',
-//             message: 'The provided ID doesn\'t match any documents'
-//           }
-//         });
-//       }
+// // UPDATE
+// // PATCH a Comment
+// router.patch('/comments/:id', requireToken, removeBlanks, (req, res, next) => {
+//   // if the client attempts to change the `owner` property by including a new
+//   // owner, prevent that by deleting that key/value pair
+//   delete req.body.comment.owner
+
+//   Comment.findById(req.params.id)
+//     .then(handle404)
+//     .then(comment => {
+//       // pass the `req` object and the Mongoose record to `requireOwnership`
+//       // it will throw an error if the current user isn't the owner
+//       requireOwnership(req, comment)
+
+//       // pass the result of Mongoose's `.update` to the next `.then`
+//       return comment.update(req.body.comment)
 //     })
-//     // Catch any errors that might occur
-//     .catch(function(error) {
-//       res.status(500).json({ error: error });
-//     });
-// });
+//     // if that succeeded, return 204 and no JSON
+//     .then(() => res.sendStatus(204))
+//     // if an error occurs, pass it to the handler
+//     .catch(next)
+// })
 
 //----------------------------------------------------------------------
 
-
-// CREATE
-// POST /comment
-router.post('/comments', requireToken, (req, res, next) => {
-  // set owner of new comment to be current user
-  console.log(req.body)
-  req.body.comment.owner = req.user.id
-
-  Comment.create(req.body.comment)
-    // respond to succesful `create` with status 201 and JSON of new "comment"
-    .then(comment => {
-      res.status(201).json({
-        comment: comment.toObject()
-      })
-    })
-    // if an error occurs, pass it off to our error handler
-    // the error handler needs the error message and the `res` object so that it
-    // can send an error message back to the client
-    .catch(next)
-})
-
-
-
-// UPDATE
-// PATCH /examples/5a7db6c74d55bc51bdf39793
-router.patch('/comments/:id', requireToken, removeBlanks, (req, res, next) => {
-  // if the client attempts to change the `owner` property by including a new
-  // owner, prevent that by deleting that key/value pair
-  delete req.body.comment.owner
-
-  Comment.findById(req.params.id)
-    .then(handle404)
-    .then(comment => {
-      // pass the `req` object and the Mongoose record to `requireOwnership`
-      // it will throw an error if the current user isn't the owner
-      requireOwnership(req, comment)
-
-      // pass the result of Mongoose's `.update` to the next `.then`
-      return comment.update(req.body.comment)
-    })
-    // if that succeeded, return 204 and no JSON
-    .then(() => res.sendStatus(204))
-    // if an error occurs, pass it to the handler
-    .catch(next)
-})
-
 // DESTROY
-// DELETE /examples/5a7db6c74d55bc51bdf39793
+// DELETE a Comment
 router.delete('/stories/:story_id/comments/:comment_id', requireToken, (req, res, next) => {
   Comment.findById(req.params.comment_id)
     .then(handle404)
